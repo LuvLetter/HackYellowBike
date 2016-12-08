@@ -9,13 +9,12 @@ def main():
         bot = TelegramBot(json.load(bot_info))
     updates = bot.get_updates().wait()
     user_id = int(-139223745)
+    mints = -1
     while True:
-        updates = bot.get_updates().wait()
-        for update in updates:
-        print(update)
-        # print(u'{} {}'.format(message.time, message.text))
-        # bot.send_message(user_id, "start").wait()
-        # time.sleep(10)
+        message = "start"
+        print(u'{} {}'.format(message.time, message.text))
+        bot.send_message(user_id, u'{} {}'.format(message.time, message.tex)).wait()
+        time.sleep(10)
 
 # def getShoolID():
 #
