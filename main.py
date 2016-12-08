@@ -5,17 +5,21 @@ import sqlite3
 import json
 
 def main():
-    with open('bot_info.json') as bot_info:
-        bot = TelegramBot(json.load(bot_info))
-    updates = bot.get_updates().wait()
+    with open('bot_info') as bot_info:
+        #print(json.dump(bot_info))
+        bot = TelegramBot(bot_info)
     user_id = int(-139223745)
     while True:
         updates = bot.get_updates().wait()
         for update in updates:
-        print(update)
+            print(update)
+            # try:
+            #     if(update.split() == "/get")
+            #         bot.send_message(user_id, "start").wait()
+
         # print(u'{} {}'.format(message.time, message.text))
         # bot.send_message(user_id, "start").wait()
-        # time.sleep(10)
+        time.sleep(10)
 
 # def getShoolID():
 #
