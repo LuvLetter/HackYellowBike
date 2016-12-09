@@ -12,11 +12,11 @@ def main():
        (ID INT KEY    NOT NULL,
        PWD  INT   NOT NULL
        );''')
-        with open('bot_info.json') as bot_info:
-            bot_info = json.loads(bot_info.read())
-            bot = TelegramBot(bot_info["id"]+':'+bot_info["token"])
-            conn = sqlite3.connect('test.db')
-            offsets = bot_info["offsets"]
+        bot_info = open('bot_info.json')
+        bot_info = json.loads(bot_info.read())
+        bot = TelegramBot(bot_info["id"]+':'+bot_info["token"])
+        conn = sqlite3.connect('test.db')
+        offsets = bot_info["offsets"]
         while True:
             updates = bot.get_updates(offsets).wait()
             for update in updates:
@@ -46,7 +46,8 @@ def main():
             print(json.dumps(bot_info), file = save)
         db.close()
         exit()
-
+    except Exception:
+        db.close()
 
 # def getPWD(content):
 #
